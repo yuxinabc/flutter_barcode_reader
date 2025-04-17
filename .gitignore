@@ -9,3 +9,6 @@ ios/.generated/
 packages
 pubspec.lock
 example/ios/Podfile.lock
+
+# FVM Version Cache
+.fvm/

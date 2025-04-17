@@ -1,6 +1,7 @@
 syntax = "proto3";
 package de.mintware.barcode_scan;
 option java_package = "de.mintware.barcode_scan";
+option dart_generate_proto3_optional_fields = true; // 启用空安全
 
 message AndroidConfiguration {
     // You can optionally set aspect ratio tolerance level

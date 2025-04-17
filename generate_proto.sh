@@ -13,6 +13,7 @@ cat << HEADER > "$PROTO_OUT_FILE"
 
 syntax = "proto3";
 option java_package = "de.mintware.barcode_scan";
+option dart_generate_proto3_optional_fields = true; // 启用空安全
 HEADER
 
 echo $FILE_HEADER >> $PROTO_OUT_FILE;

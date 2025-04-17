@@ -1,4 +1,5 @@
 syntax = "proto3";
+option dart_generate_proto3_optional_fields = true; // 启用空安全
 package de.mintware.barcode_scan;
 import "android_configuration.proto";
 import "barcode_format.proto";

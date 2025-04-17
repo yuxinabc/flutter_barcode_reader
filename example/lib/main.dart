@@ -15,7 +15,7 @@ class _MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<_MyApp> {
-  ScanResult scanResult;
+  ScanResult? scanResult;
 
   final _flashOnController = TextEditingController(text: "Flash on");
   final _flashOffController = TextEditingController(text: "Flash off");
@@ -38,7 +38,7 @@ class _MyAppState extends State<_MyApp> {
     super.initState();
 
     Future.delayed(Duration.zero, () async {
-      _numberOfCameras = await BarcodeScanner.numberOfCameras;
+      _numberOfCameras = await BarcodeScanner.numberOfCameras ?? 0;
       setState(() {});
     });
   }
@@ -52,19 +52,19 @@ class _MyAppState extends State<_MyApp> {
             children: <Widget>[
               ListTile(
                 title: Text("Result Type"),
-                subtitle: Text(scanResult.type?.toString() ?? ""),
+                subtitle: Text(scanResult?.type?.toString() ?? ""),
               ),
               ListTile(
                 title: Text("Raw Content"),
-                subtitle: Text(scanResult.rawContent ?? ""),
+                subtitle: Text(scanResult?.rawContent ?? ""),
               ),
               ListTile(
                 title: Text("Format"),
-                subtitle: Text(scanResult.format?.toString() ?? ""),
+                subtitle: Text(scanResult?.format?.toString() ?? ""),
               ),
               ListTile(
                 title: Text("Format note"),
-                subtitle: Text(scanResult.formatNote ?? ""),
+                subtitle: Text(scanResult?.formatNote ?? ""),
               ),
             ],
           ),
@@ -100,7 +100,6 @@ class _MyAppState extends State<_MyApp> {
       ListTile(
         title: TextField(
           decoration: InputDecoration(
-            hasFloatingPlaceholder: true,
             labelText: "Flash On",
           ),
           controller: _flashOnController,
@@ -109,7 +108,6 @@ class _MyAppState extends State<_MyApp> {
       ListTile(
         title: TextField(
           decoration: InputDecoration(
-            hasFloatingPlaceholder: true,
             labelText: "Flash Off",
           ),
           controller: _flashOffController,
@@ -118,7 +116,6 @@ class _MyAppState extends State<_MyApp> {
       ListTile(
         title: TextField(
           decoration: InputDecoration(
-            hasFloatingPlaceholder: true,
             labelText: "Cancel",
           ),
           controller: _cancelController,
@@ -152,7 +149,7 @@ class _MyAppState extends State<_MyApp> {
           value: _useAutoFocus,
           onChanged: (checked) {
             setState(() {
-              _useAutoFocus = checked;
+              _useAutoFocus = checked ?? false;
             });
           },
         )
@@ -170,7 +167,7 @@ class _MyAppState extends State<_MyApp> {
         value: _autoEnableFlash,
         onChanged: (checked) {
           setState(() {
-            _autoEnableFlash = checked;
+            _autoEnableFlash = checked ?? false;
           });
         },
       )

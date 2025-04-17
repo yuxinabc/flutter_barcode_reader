@@ -12,7 +12,7 @@ I recommend the Firebase ML Vision package as an alternative: https://pub.dev/pa
 
 # Barcode Scanner
 
-A flutter plugin for scanning 2D barcodes and QR codes. 
+A flutter plugin for scanning 2D barcodes and QR codes.
 
 This provides a simple wrapper for two commonly used iOS and Android libraries:
 
@@ -32,7 +32,7 @@ Android: https://github.com/dm77/barcodescanner
 For Android, you must do the following before you can use the plugin:
 
 * Add the camera permission to your AndroidManifest.xml
-     
+
      `<uses-permission android:name="android.permission.CAMERA" />`
 
 * This plugin is written in Kotlin. Therefore, you need to add Kotlin support to your project. See [installing the Kotlin plugin](https://kotlinlang.org/docs/tutorials/kotlin-android.html#installing-the-kotlin-plugin).
@@ -40,7 +40,7 @@ For Android, you must do the following before you can use the plugin:
 Edit your project-level build.gradle file to look like this:
 ```groovy
 buildscript {
-    ext.kotlin_version = '1.3.61'
+    ext.kotlin_version = '1.5.0'
     // ...
     dependencies {
         // ...
@@ -91,7 +91,7 @@ import 'package:barcode_scan/barcode_scan.dart';
 
 void main() async {
   var result = await BarcodeScanner.scan();
-  
+
   print(result.type); // The result type (barcode, cancelled, failed)
   print(result.rawContent); // The barcode content
   print(result.format); // The barcode format (as enum)
@@ -108,13 +108,13 @@ You can pass options to the scan method:
 import 'package:barcode_scan/barcode_scan.dart';
 
 void main() async {
-  
+
   var options = ScanOptions(
     // set the options
   );
 
   var result = await BarcodeScanner.scan(options: options);
-  
+
   // ...
 }
 ```
